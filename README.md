@@ -16,3 +16,7 @@ Now you need to fill your json file with the manage.py code, just run it and fol
 This project have 3 parts. Fisrt, create the empty Json file. Second, fill your Json file. Third, run saludos.py and greet everyone.
 saludos.py identify the present day to look into the Json file and get who have his birthday that day. After that, this code asign a random hour to send the greeting message using Pywhatkit to open automatically you web browser and send one of two types of greeting based in the clossenes variable provided in the part 2.
 This code will run forever until you stop it manually
+
+# Note
+
+You can edit the greeting in the line 23-26 of saludos.py
