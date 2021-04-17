@@ -1,13 +1,9 @@
 import json
 
-# with open('cumpleaños2.json') as json_file:
-#     json_decoded = json.load(json_file)
-
-
 def add():
-    print('Ingrese el nombre completo')
+    print('Enter the full name')
     nombre = input()
-    print('Ingrese el numero de esta persona')
+    print('Enter the phone number')
 
     numero= input()
     n = [i for i in str(numero)]
@@ -16,43 +12,43 @@ def add():
         if n[0] == '+' :
             check = False
         else:
-            print('Ingrese numero de nuevo ej: +569XXXXXXXX')
+            print('Enter a valid phone number ej: +XXXXXXXXXXX')
             numero= input()
             n = [i for i in str(numero)]
 
-    print('Ingrese el apodo de esta persona')
+    print('Enter the nickname')
     apodo = input()
-    print('Ingrese el tipo de cercania (familiar, amigo, otro)')
+    print('Enter the clossenes (family, friend, other)')
     cercania = input()
     check = True
     while check:
-        if cercania in ['familiar' , 'amigo' , 'otro']:
+        if cercania in ['family', 'friend', 'other']:
             check = False
         else:
-            print('Ingrese tipo de cercania valido: (familiar, amigo, otro)')
+            print('Enter a valid type of clossenes (family, friend, other)')
             cercania = input()
-    print('Ingrese fecha de cumpleaños ej: DD/MM')
+    print('Enter the birth date ej: DD/MM')
     fecha = input()
     check = True
     while check:
         if (fecha[2] == "/") & (len(fecha) == 5):
             check = False
         else:
-            print('Ingrese una fecha valida ej: DD/MM')
+            print('Enter a valid date ej: DD/MM')
             fecha = input()
     
-    with open('cumpleaños.json') as json_file:
+    with open('birthdays.json') as json_file:
         json_decoded = json.load(json_file)
 
     json_decoded[fecha].append({'nombre' : nombre, 'numero' : numero, 'apodo': apodo, 'cercania': cercania})
 
-    with open('cumpleaños.json', 'w') as data:
+    with open('birthdays.json', 'w') as data:
         json.dump(json_decoded, data)
 
 def eliminar():
-    print('¿Que numero desea eliminar?')
+    print('What number do you whant to delete?')
     numero = input()
-    with open('cumpleaños.json') as json_file:
+    with open('birthdays.json') as json_file:
         json_decoded = json.load(json_file)
     
     check = True
@@ -62,19 +58,20 @@ def eliminar():
             for j in range(cant):
                 if json_decoded[i][j]['numero'] == numero:
                     del json_decoded[i][j]
+                    print('deleted')
                     check = False
                     break
 
     if check:
-        print('No se ha encontrado el numero de telefono')
+        print('Phone number not found')
     else:
-        with open('cumpleaños.json', 'w') as data:
+        with open('birthdays.json', 'w') as data:
             json.dump(json_decoded, data)
 
 def ver():
-    print('¿Que numero desea ver?')
+    print('What number do you want to see?')
     numero = input()
-    with open('cumpleaños.json') as json_file:
+    with open('birthdays.json') as json_file:
         json_decoded = json.load(json_file)
     
     check = True
@@ -88,26 +85,26 @@ def ver():
                     break
 
     if check:
-        print('No se ha encontrado el numero de telefono')
+        print('Phone number not found')
 
 
 while True:
-    print('¿Que desea hacer? ( Agregar (A) , Eliminar (E) , Ver (V) ,  Salir (S))')
+    print('What do you want to do? ( Add (A) , Delete (D) , See (S) ,  Quit (Q) )')
     opcion = input()
     check = True
     while check:
-        if opcion in ['A' , 'E'  , 'a' , 'e' , 'S', 's' , 'V' , 'v'] :
+        if opcion in ['A' , 'D'  , 'a' , 'D' , 'Q', 'Q' , 'S' , 's'] :
             check = False
         else:
-            print('Ingrese opcion valida ( Agregar (A) , Eliminar (E) , Ver (V) , Salir (S))')
+            print('Please, enter a valid optiona ( Add (A) , Delete (D) , See (S) ,  Quit (Q) )')
             opcion = input()
 
     if opcion in ['A' , 'a']:
         add()
-    elif opcion in ['E' , 'e']:
+    elif opcion in ['D' , 'd']:
         eliminar()
-    elif opcion in ['V' , 'v']:
+    elif opcion in ['s' , 'S']:
         ver()
-    elif opcion in ['S', 's']:
+    elif opcion in ['Q', 'q']:
         break
 
