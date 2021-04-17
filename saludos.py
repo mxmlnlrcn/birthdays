@@ -21,9 +21,9 @@ while True:
                 numero = cumpleaños[fecha][i]['telefono']
                 apodo = cumpleaños[fecha][i]['apodo']
                 if cumpleaños[fecha][i]['cercania'] == 'amigo':
-                    mensaje = "Bueeeena "+apodo+" feliz cumpleaños!!!!, ojala la pases increible "   
+                    mensaje = "What's uuup "+apodo+" Happy birthday!!!!, have a wonderfull day"   
                 else:
-                    mensaje = "Feliz cumpleaños "+apodo+", espero que la pases super hoy dia"
+                    mensaje = "Happy birthday "+apodo+", Have a nice day"
 
                 sendwhatmsg(numero, mensaje , hora[i],minutos[i])
 
