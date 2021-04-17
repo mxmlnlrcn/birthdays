@@ -1,6 +1,6 @@
 import json
 
-with open('cumpleaños.json') as json_file:
+with open('birthdays.json') as json_file:
     json_decoded = json.load(json_file)
 
 diccionario = {}
@@ -12,5 +12,5 @@ for i in range(1,13):
 
 json_decoded = diccionario
 
-with open('cumpleaños.json', 'w') as data:
+with open('birthdays.json', 'w') as data:
     json.dump(json_decoded, data)
